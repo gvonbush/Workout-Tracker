@@ -1,11 +1,13 @@
 var express = require("express");
 var mongoose = require("mongoose");
+const logger = require("morgan")
 
 var app = express();
 var PORT = process.env.PORT || 3000;
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(logger("dev"));
 app.use(express.json());
 
 require("./routes/apiRoutes")(app);
